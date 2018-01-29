@@ -21,3 +21,10 @@ def updateAllStock(resDict):
 def increaseGatherAmount(resDict, dictKey, gatherIncrease):
     resDict.update({dictKey: [resDict[dictKey][0], (resDict[dictKey][1] + gatherIncrease)]})
     return resDict
+
+# Print the stock amount of each resource
+def printStockAmount(resDict):
+    print("Resource Stock Amount -")
+    for key in resDict:
+        print(("{0}: {1}").format(key.title(), str(getStockAmount(resDict, key))))
+    print()

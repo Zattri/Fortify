@@ -8,6 +8,7 @@ def getGatherAmount(resDict, dictKey):
 
 # Gather a resource of any type, increasing the stock amount of that resource by the gather amount
 def updateStock(resDict, dictKey):
+    dictKey = dictKey.lower()
     resDict.update({dictKey: [(resDict[dictKey][0] + resDict[dictKey][1]), resDict[dictKey][1]]})
     return resDict
 
@@ -16,15 +17,3 @@ def updateAllStock(resDict):
     for key in resDict:
         resDict.update({key: [(resDict[key][0] + resDict[key][1]), resDict[key][1]]})
     return resDict
-
-# Increase the gather amount of a resource by a specified value
-def increaseGatherAmount(resDict, dictKey, gatherIncrease):
-    resDict.update({dictKey: [resDict[dictKey][0], (resDict[dictKey][1] + gatherIncrease)]})
-    return resDict
-
-# Print the stock amount of each resource
-def printStockAmount(resDict):
-    print("Resource Stock Amount -")
-    for key in resDict:
-        print(("{0}: {1}").format(key.title(), str(getStockAmount(resDict, key))))
-    print()

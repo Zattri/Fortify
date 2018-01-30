@@ -2,32 +2,36 @@ import pygame
 import resource
 import building
 import index
+import output
 
 
 def main():
     # dict(key<resourceType>: [stockAmount, gatherAmount])
     resourceDict = {"stone": [10, 5], "wood": [10, 5], "fish": [0, 5]}
     myBuildings = index.buildingIndex
-    upgradeIndex = index.upgradeIndex # Make const
+    upgradeIndex = index.upgradeIndex
+    techTree = index.techIndex
 
     resourceDict = resource.updateStock(resourceDict, "stone")
     resourceDict = resource.updateAllStock(resourceDict)
 
-    resource.printStockAmount(resourceDict)
-    building.printBuildings(myBuildings)
+    output.stockAmount(resourceDict)
+    output.buildingList(myBuildings)
+    output.techTree(techTree)
 
-    returnTuple = building.upgradeBuilding(0, myBuildings, upgradeIndex, resourceDict)
-    resourceDict = returnTuple[0]
-    myBuildings = returnTuple[1]
+    resourceDict, myBuildings, techTree = building.upgradeBuilding(0, myBuildings, upgradeIndex, techTree, resourceDict)
 
-    resource.printStockAmount(resourceDict)
-    building.printBuildings(myBuildings)
+    output.stockAmount(resourceDict)
+    output.buildingList(myBuildings)
+    output.techTree(techTree)
 
-    returnTuple = building.upgradeBuilding(0, myBuildings, upgradeIndex, resourceDict)
-    resourceDict = returnTuple[0]
-    myBuildings = returnTuple[1]
+    resourceDict, myBuildings, techTree = building.upgradeBuilding(0, myBuildings, upgradeIndex, techTree, resourceDict)
 
-    resource.printStockAmount(resourceDict)
-    building.printBuildings(myBuildings)
+    output.stockAmount(resourceDict)
+    output.buildingList(myBuildings)
+    output.techTree(techTree)
+
+    resourceDict = resource.updateStock(resourceDict, "wood")
+    output.stockAmount(resourceDict)
 
 main()

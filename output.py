@@ -24,7 +24,8 @@ def buildingList(buildIndex):
 
 # Prints out the details of an unlocked technology
 def techUnlockDetails(techId, techIndex):
-    print(("You have unlocked {0}\n").format(techIndex[techId][0]))
+    if techId != None:
+        print(("You have unlocked {0}\n").format(techIndex[techId][0]))
 
 # Prints out the currently researched technology
 def techTree(techIndex):

@@ -7,8 +7,6 @@ import output
 def upgradeBuilding(buildId, buildIndex, upgradeIndex, techIndex, resDict):
     if buildIndex[buildId] != None:
         upgDict, gatherDict, techId = getUpgradeIndex(buildId, buildIndex[buildId][2], upgradeIndex)
-        # Get gather amount update
-        # Get techId to unlock
         if checkUpgradeCost(upgDict, resDict):
             resDict = payUpgradeCost(upgDict, resDict)
             buildIndex = incrementUpgradeTier(buildId, buildIndex)

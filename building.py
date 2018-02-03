@@ -1,4 +1,5 @@
 import output
+
 # Main upgrade function -
 # Check if the upgrade can be afforded
 # If so pay the cost, increment the upgrade tier
@@ -6,8 +7,6 @@ import output
 def upgradeBuilding(buildId, buildIndex, upgradeIndex, techIndex, resDict):
     if buildIndex[buildId] != None:
         upgDict, gatherDict, techId = getUpgradeIndex(buildId, buildIndex[buildId][2], upgradeIndex)
-        # Get gather amount update
-        # Get techId to unlock
         if checkUpgradeCost(upgDict, resDict):
             resDict = payUpgradeCost(upgDict, resDict)
             buildIndex = incrementUpgradeTier(buildId, buildIndex)
@@ -39,7 +38,7 @@ def payUpgradeCost(upgDict, resDict):
 
 # Increment the upgrade tier of the appropriate building up by 1
 def incrementUpgradeTier(buildId, buildIndex):
-    buildIndex[buildId] = (buildIndex[buildId][0], buildIndex[buildId][1], (buildIndex[buildId][2] + 1))
+    buildIndex[buildId][2] = buildIndex[buildId][2] + 1
     return buildIndex
 
 # Unlocks a part of the technology tree

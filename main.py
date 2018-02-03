@@ -7,7 +7,7 @@ import output
 
 def main():
     # dict(key<resourceType>: [stockAmount, gatherAmount])
-    resourceDict = {"stone": [10, 5], "wood": [10, 5], "fish": [0, 5]}
+    resourceDict = index.resourceDictionary
     myBuildings = index.buildingIndex
     upgradeIndex = index.upgradeIndex
     techTree = index.techIndex
